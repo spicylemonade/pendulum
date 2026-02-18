@@ -63,16 +63,16 @@
           "id": "item_004",
           "description": "Derive and document the equations of motion for the double pendulum",
           "acceptance_criteria": "A markdown file (docs/equations.md) containing the full Lagrangian derivation for a double pendulum with masses m1, m2, lengths l1, l2, and angles theta1, theta2. Must include: the Lagrangian L = T - V, the resulting two coupled second-order ODEs, and their reduction to four first-order ODEs suitable for numerical integration. Must cite at least 2 sources from sources.bib.",
-          "status": "in_progress",
-          "notes": null,
+          "status": "completed",
+          "notes": "Created docs/equations.md with full Lagrangian derivation, coupled 2nd-order ODEs, first-order reduction, and energy formula. Cites 6 sources from sources.bib.",
           "error": null
         },
         {
           "id": "item_005",
           "description": "Survey existing double pendulum simulators and identify design trade-offs",
           "acceptance_criteria": "A comparison table (in docs/survey.md) of at least 3 existing double pendulum implementations found via web search, listing: language, integration method, visualization approach, lines of code, and features. Must cite each implementation in sources.bib. Must conclude with a justified choice of language (Python) and integration approach for this project.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Created docs/survey.md comparing 3 implementations with full feature table. Justified Python + solve_ivp + Stormer-Verlet approach.",
           "error": null
         }
       ]
@@ -268,9 +268,9 @@
   ],
   "summary": {
     "total_items": 25,
-    "completed": 3,
-    "in_progress": 1,
+    "completed": 5,
+    "in_progress": 0,
     "failed": 0,
-    "pending": 21
+    "pending": 20
   }
 }
