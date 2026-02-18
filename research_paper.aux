@@ -1,0 +1,159 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{shinbrot1992chaos,levien1993double}
+\citation{stachowiak2006numerical}
+\citation{goldstein2002classical,landau1976mechanics}
+\citation{dassencio_double_pendulum,cristello_double_pendulum,scipython_double_pendulum}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Gap in the literature.}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{1}{section*.2}\protected@file@percent }
+\citation{shinbrot1992chaos,stachowiak2006numerical}
+\citation{goldstein2002classical}
+\citation{landau1976mechanics}
+\citation{wikipedia_double_pendulum}
+\citation{shinbrot1992chaos}
+\citation{levien1993double}
+\citation{stachowiak2006numerical}
+\citation{dalessi2023analytical}
+\citation{hairer2003geometric,hairer2006geometric}
+\citation{ruth1983canonical}
+\citation{hairer2006geometric}
+\citation{benettin1980lyapunov}
+\citation{skokos2010lyapunov}
+\citation{dassencio_double_pendulum}
+\citation{cristello_double_pendulum}
+\citation{scipython_double_pendulum}
+\@writefile{toc}{\contentsline {paragraph}{Paper outline.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Classical derivations.}{2}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Chaos in the double pendulum.}{2}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Numerical integration.}{2}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Lyapunov exponent computation.}{2}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Open-source simulators.}{2}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Background \& Preliminaries}{2}{section.3}\protected@file@percent }
+\newlabel{sec:background}{{3}{2}{Background \& Preliminaries}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}System Description}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic of the double pendulum system. Two point masses $m_1$ and $m_2$ are connected by rigid rods of lengths $l_1$ and $l_2$. The generalized coordinates $\theta _1$ and $\theta _2$ are measured from the downward vertical. Gravity $g$ acts downward.\relax }}{3}{figure.caption.9}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:schematic}{{1}{3}{Schematic of the double pendulum system. Two point masses $m_1$ and $m_2$ are connected by rigid rods of lengths $l_1$ and $l_2$. The generalized coordinates $\theta _1$ and $\theta _2$ are measured from the downward vertical. Gravity $g$ acts downward.\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Notation}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of notation.\relax }}{3}{table.caption.10}\protected@file@percent }
+\newlabel{tab:notation}{{1}{3}{Summary of notation.\relax }{table.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Lagrangian Formulation}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:cart1}{{1}{3}{Lagrangian Formulation}{equation.3.1}{}}
+\newlabel{eq:cart2}{{2}{3}{Lagrangian Formulation}{equation.3.2}{}}
+\newlabel{eq:kinetic}{{3}{3}{Lagrangian Formulation}{equation.3.3}{}}
+\newlabel{eq:potential}{{4}{3}{Lagrangian Formulation}{equation.3.4}{}}
+\citation{wikipedia_double_pendulum}
+\citation{hairer2006geometric}
+\citation{hairer2003geometric}
+\citation{benettin1980lyapunov,skokos2010lyapunov}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Equations of Motion}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{eq:ddtheta1}{{5}{4}{Equations of Motion}{equation.3.5}{}}
+\newlabel{eq:ddtheta2}{{6}{4}{Equations of Motion}{equation.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Total Energy}{4}{subsection.3.5}\protected@file@percent }
+\newlabel{eq:energy}{{7}{4}{Total Energy}{equation.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Method}{4}{section.4}\protected@file@percent }
+\newlabel{sec:method}{{4}{4}{Method}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Adaptive Integration: RK45}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Symplectic Integration: Implicit Midpoint}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:midpoint}{{8}{4}{Symplectic Integration: Implicit Midpoint}{equation.4.8}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Implicit midpoint symplectic integrator\relax }}{4}{algorithm.1}\protected@file@percent }
+\newlabel{alg:symplectic}{{1}{4}{Implicit midpoint symplectic integrator\relax }{algorithm.1}{}}
+\citation{stachowiak2006numerical}
+\citation{shinbrot1992chaos}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Lyapunov Exponent Estimation}{5}{subsection.4.3}\protected@file@percent }
+\newlabel{eq:lyapunov}{{9}{5}{Lyapunov Exponent Estimation}{equation.4.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Poincar\'e Section}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Flip-Count Basin Map}{5}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimental Setup}{5}{section.5}\protected@file@percent }
+\newlabel{sec:setup}{{5}{5}{Experimental Setup}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Default Parameters}{5}{subsection.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Default physical parameters for all experiments.\relax }}{5}{table.caption.11}\protected@file@percent }
+\newlabel{tab:params}{{2}{5}{Default physical parameters for all experiments.\relax }{table.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Initial Conditions}{5}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Integration Settings}{6}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Integration parameters for each experiment.\relax }}{6}{table.caption.12}\protected@file@percent }
+\newlabel{tab:integration}{{3}{6}{Integration parameters for each experiment.\relax }{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Hardware and Software}{6}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Parameter Sweep Design}{6}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{6}{section.6}\protected@file@percent }
+\newlabel{sec:results}{{6}{6}{Results}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Baseline Trajectory and Energy Conservation}{6}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Integrator Comparison}{6}{subsection.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Baseline double pendulum trajectory over 30\nobreakspace  {}s with moderate-energy initial conditions ($\theta _1 = \pi /4$, $\theta _2 = \pi /2$). \textbf  {Top:} Angular displacement time series for both bobs, showing irregular oscillations characteristic of chaotic dynamics. \textbf  {Bottom:} Phase portrait $(\theta _1, \omega _1)$ showing space-filling behavior within a bounded region.\relax }}{7}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:baseline}{{2}{7}{Baseline double pendulum trajectory over 30~s with moderate-energy initial conditions ($\theta _1 = \pi /4$, $\theta _2 = \pi /2$). \textbf {Top:} Angular displacement time series for both bobs, showing irregular oscillations characteristic of chaotic dynamics. \textbf {Bottom:} Phase portrait $(\theta _1, \omega _1)$ showing space-filling behavior within a bounded region.\relax }{figure.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Baseline performance benchmark for RK45 integration over 100\nobreakspace  {}s.\relax }}{7}{table.caption.14}\protected@file@percent }
+\newlabel{tab:benchmark}{{4}{7}{Baseline performance benchmark for RK45 integration over 100~s.\relax }{table.caption.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Integrator comparison over 100\nobreakspace  {}s of simulation. Energy drift is reported as the maximum relative deviation from the initial energy. \textbf  {Bold} indicates the best result for each step size.\relax }}{7}{table.caption.16}\protected@file@percent }
+\newlabel{tab:integrators}{{5}{7}{Integrator comparison over 100~s of simulation. Energy drift is reported as the maximum relative deviation from the initial energy. \textbf {Bold} indicates the best result for each step size.\relax }{table.caption.16}{}}
+\citation{stachowiak2006numerical}
+\citation{stachowiak2006numerical}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison of RK45 (adaptive) and symplectic (implicit midpoint) integrators over 100\nobreakspace  {}s at three step sizes. The symplectic integrator shows bounded energy drift that decreases as $O(h^2)$ with step size, while RK45 maintains near-constant accuracy due to adaptive internal stepping. The key advantage of the symplectic method is that its energy error remains bounded over arbitrarily long integration horizons.\relax }}{8}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:integrator}{{3}{8}{Comparison of RK45 (adaptive) and symplectic (implicit midpoint) integrators over 100~s at three step sizes. The symplectic integrator shows bounded energy drift that decreases as $O(h^2)$ with step size, while RK45 maintains near-constant accuracy due to adaptive internal stepping. The key advantage of the symplectic method is that its energy error remains bounded over arbitrarily long integration horizons.\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Sensitivity to Initial Conditions}{8}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Lyapunov Exponent and Parameter Sensitivity}{8}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Poincar\'e Section}{8}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Exponential divergence of nearby trajectories in the double pendulum. Two simulations differing by $10^{-9}$\nobreakspace  {}rad in $\theta _1$ show a clear exponential growth phase (linear on the log scale) before saturating at $O(1)$\nobreakspace  {}rad separation. The initial linear regime confirms deterministic chaos, with a divergence time scale consistent with the computed Lyapunov exponent.\relax }}{9}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:chaos}{{4}{9}{Exponential divergence of nearby trajectories in the double pendulum. Two simulations differing by $10^{-9}$~rad in $\theta _1$ show a clear exponential growth phase (linear on the log scale) before saturating at $O(1)$~rad separation. The initial linear regime confirms deterministic chaos, with a divergence time scale consistent with the computed Lyapunov exponent.\relax }{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Lyapunov exponent heatmap across 20 combinations of mass ratio ($m_2/m_1$) and length ratio ($l_2/l_1$). Higher mass ratios and shorter second links generally produce stronger chaos (larger $\lambda _1$). The maximum exponent ($\lambda _1 = 2.15$\nobreakspace  {}s$^{-1}$) occurs at $m_2/m_1 = 10$ and $l_2/l_1 = 0.1$, while the minimum ($\lambda _1 = 0.11$\nobreakspace  {}s$^{-1}$) occurs at $m_2/m_1 = 0.1$ and $l_2/l_1 = 2.0$.\relax }}{9}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:sensitivity}{{5}{9}{Lyapunov exponent heatmap across 20 combinations of mass ratio ($m_2/m_1$) and length ratio ($l_2/l_1$). Higher mass ratios and shorter second links generally produce stronger chaos (larger $\lambda _1$). The maximum exponent ($\lambda _1 = 2.15$~s$^{-1}$) occurs at $m_2/m_1 = 10$ and $l_2/l_1 = 0.1$, while the minimum ($\lambda _1 = 0.11$~s$^{-1}$) occurs at $m_2/m_1 = 0.1$ and $l_2/l_1 = 2.0$.\relax }{figure.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Selected Lyapunov exponents $\lambda _1$ (s$^{-1}$) for representative parameter combinations. All values are positive, confirming chaos.\relax }}{10}{table.caption.19}\protected@file@percent }
+\newlabel{tab:lyapunov_selected}{{6}{10}{Selected Lyapunov exponents $\lambda _1$ (s$^{-1}$) for representative parameter combinations. All values are positive, confirming chaos.\relax }{table.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Poincar\'e section of the double pendulum, recording $(\theta _2, \omega _2)$ at each upward zero-crossing of $\theta _1$. Six initial conditions are shown with different colors. The coexistence of smooth elliptical islands (regular motion) and scattered points (chaotic sea) is characteristic of a Hamiltonian system with mixed phase space, consistent with observations by \citet  {stachowiak2006numerical}.\relax }}{10}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:poincare}{{6}{10}{Poincar\'e section of the double pendulum, recording $(\theta _2, \omega _2)$ at each upward zero-crossing of $\theta _1$. Six initial conditions are shown with different colors. The coexistence of smooth elliptical islands (regular motion) and scattered points (chaotic sea) is characteristic of a Hamiltonian system with mixed phase space, consistent with observations by \citet {stachowiak2006numerical}.\relax }{figure.caption.20}{}}
+\citation{shinbrot1992chaos}
+\citation{stachowiak2006numerical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Flip-Count Basin Map}{11}{subsection.6.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Flip-count basin map showing the number of complete $2\pi $ rotations of the second bob during a 10\nobreakspace  {}s simulation, as a function of initial angles $(\theta _1, \theta _2)$ with zero initial velocities. The fractal-like boundaries between differently colored regions demonstrate extreme sensitivity to initial conditions. The maximum observed flip count is 15, with the most active regions concentrated near $(\pm \pi , \pm \pi )$ where the initial potential energy is highest.\relax }}{11}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:flipmap}{{7}{11}{Flip-count basin map showing the number of complete $2\pi $ rotations of the second bob during a 10~s simulation, as a function of initial angles $(\theta _1, \theta _2)$ with zero initial velocities. The fractal-like boundaries between differently colored regions demonstrate extreme sensitivity to initial conditions. The maximum observed flip count is 15, with the most active regions concentrated near $(\pm \pi , \pm \pi )$ where the initial potential energy is highest.\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Performance Profiling}{11}{subsection.6.7}\protected@file@percent }
+\citation{shinbrot1992chaos}
+\citation{stachowiak2006numerical}
+\citation{hairer2003geometric}
+\citation{hairer2006geometric}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Top five functions by cumulative time for a 100\nobreakspace  {}s RK45 simulation. The \texttt  {derivatives()} function is called 91{,}226 times during the adaptive integration, dominating the computation.\relax }}{12}{table.caption.22}\protected@file@percent }
+\newlabel{tab:profiling}{{7}{12}{Top five functions by cumulative time for a 100~s RK45 simulation. The \texttt {derivatives()} function is called 91{,}226 times during the adaptive integration, dominating the computation.\relax }{table.caption.22}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{12}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{7}{12}{Discussion}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Comparison with Prior Work}{12}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Trade-offs Between Integrators}{12}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Parameter Sensitivity}{12}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Limitations}{12}{subsection.7.4}\protected@file@percent }
+\citation{ruth1983canonical}
+\bibstyle{plainnat}
+\bibdata{sources}
+\bibcite{benettin1980lyapunov}{{1}{1980}{{Benettin et~al.}}{{Benettin, Galgani, Giorgilli, and Strelcyn}}}
+\bibcite{cristello_double_pendulum}{{2}{2022}{{Cristello}}{{}}}
+\bibcite{dalessi2023analytical}{{3}{2023}{{d'Alessio}}{{}}}
+\bibcite{dassencio_double_pendulum}{{4}{2020}{{Dassencio}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{13}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{13}{Conclusion}{section.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Future work.}{13}{section*.23}\protected@file@percent }
+\bibcite{goldstein2002classical}{{5}{2002}{{Goldstein et~al.}}{{Goldstein, Poole, and Safko}}}
+\bibcite{hairer2003geometric}{{6}{2003}{{Hairer et~al.}}{{Hairer, Lubich, and Wanner}}}
+\bibcite{hairer2006geometric}{{7}{2006}{{Hairer et~al.}}{{Hairer, Lubich, and Wanner}}}
+\bibcite{landau1976mechanics}{{8}{1976}{{Landau and Lifshitz}}{{}}}
+\bibcite{levien1993double}{{9}{1993}{{Levien and Tan}}{{}}}
+\bibcite{ruth1983canonical}{{10}{1983}{{Ruth}}{{}}}
+\bibcite{scipython_double_pendulum}{{11}{2019}{{SciPython}}{{}}}
+\bibcite{shinbrot1992chaos}{{12}{1992}{{Shinbrot et~al.}}{{Shinbrot, Grebogi, Wisdom, and Yorke}}}
+\bibcite{skokos2010lyapunov}{{13}{2010}{{Skokos}}{{}}}
+\bibcite{stachowiak2006numerical}{{14}{2006}{{Stachowiak and Okada}}{{}}}
+\bibcite{wikipedia_double_pendulum}{{15}{2024}{{Wikipedia contributors}}{{}}}
+\gdef \@abspage@last{14}
