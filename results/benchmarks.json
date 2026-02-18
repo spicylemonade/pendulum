@@ -1,0 +1,8 @@
+{
+  "rk4_30s_dt0001": 1.2823872566223145,
+  "symplectic_30s_dt0001": 2.0979950428009033,
+  "flip_count_100x100_estimated": "~240s (from actual run with dt=0.02, T=10s)",
+  "mle_200s": 8.41351842880249,
+  "mle_1000s_estimated": 42.06759214401245,
+  "bottleneck": "Flip-count map (O(N^2) grid x O(n_steps) per point)"
+}
