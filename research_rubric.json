@@ -1,0 +1,276 @@
+{
+  "version": "1.0",
+  "created_at": "2026-02-18T00:00:00Z",
+  "updated_at": "2026-02-18T09:22:01.161290+00:00",
+  "current_agent": "orchestrator",
+  "agent_status": {
+    "orchestrator": {
+      "status": "completed",
+      "started_at": "2026-02-18T00:00:00Z",
+      "completed_at": "2026-02-18T09:22:01.161269+00:00",
+      "error": null
+    },
+    "researcher": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "writer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "reviewer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    }
+  },
+  "phases": [
+    {
+      "id": "phase_1",
+      "name": "Problem Analysis & Literature Review",
+      "order": 1,
+      "items": [
+        {
+          "id": "item_001",
+          "description": "Analyze repository structure and existing codebase",
+          "acceptance_criteria": "Written document (in notes or separate file) listing all files, directories, their purposes, and identifying that the repo is a clean scaffold with no existing simulation code. Must note the figures/ and results/ output directories, .gitattributes LFS config, and the TASK_orchestrator.md specification.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_002",
+          "description": "Conduct literature review on double pendulum dynamics and simulation methods via web search",
+          "acceptance_criteria": "Search the web for at least 10 relevant papers, textbooks, and code repositories covering: (1) Lagrangian/Hamiltonian derivation of double pendulum equations of motion, (2) numerical integration methods (RK4, symplectic integrators), (3) chaos characterization via Lyapunov exponents, (4) Poincar\u00e9 sections and bifurcation analysis. Must document key findings from each source with full citation information.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_003",
+          "description": "Create and populate sources.bib with BibTeX entries for all consulted sources",
+          "acceptance_criteria": "File sources.bib exists in the repo root with valid BibTeX entries for at least 10 relevant sources. Must include: Shinbrot et al. 1992 (foundational chaos measurement), Stachowiak & Okada 2006 (numerical analysis of chaos), Jim\u00e9nez L\u00f3pez & Garc\u00eda Garrido 2024 (Lagrangian descriptors), the SciELO pedagogical review 2024, and at least 6 additional references covering numerical methods, Python implementations, and chaos theory fundamentals.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_004",
+          "description": "Survey existing open-source double pendulum simulators and identify best practices",
+          "acceptance_criteria": "Review at least 5 open-source implementations (e.g., dassencio/double-pendulum, josmarcristello/Double-Pendulum-Simulation, scipython double pendulum, Saptak625/DoublePendulum, ellawang44/double_pendulum_sim). Document for each: language, integration method used, visualization approach, and any energy conservation validation. Summarize best practices for the baseline implementation.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_005",
+          "description": "Define the mathematical formulation for the double pendulum system",
+          "acceptance_criteria": "Document the complete Lagrangian derivation: define generalized coordinates (theta1, theta2), write the kinetic and potential energy expressions, derive the Euler-Lagrange equations, and convert the resulting coupled second-order ODEs into a system of four first-order ODEs suitable for numerical integration. All equations must be consistent with standard references (e.g., Wikipedia double pendulum article, Shinbrot et al. 1992).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_2",
+      "name": "Baseline Implementation & Metrics",
+      "order": 2,
+      "items": [
+        {
+          "id": "item_006",
+          "description": "Implement the equations of motion as a Python function",
+          "acceptance_criteria": "A Python module (e.g., pendulum.py or sim/equations.py) exists containing a function that computes the derivatives [dtheta1/dt, domega1/dt, dtheta2/dt, domega2/dt] given the state vector [theta1, omega1, theta2, omega2] and parameters (m1, m2, L1, L2, g). Function must accept parameters as arguments (not hardcoded). Unit test or assertion verifies the function returns correct derivative values for a known test case.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_007",
+          "description": "Implement RK4 numerical integrator from scratch",
+          "acceptance_criteria": "A standalone RK4 integrator function is implemented (not using scipy) that takes: derivative function, initial state, time step, and number of steps. Must return the full time series of states. Verify correctness by integrating a simple harmonic oscillator (single pendulum, small angle) and comparing to the analytical solution with relative error < 1e-6 over 10 periods.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_008",
+          "description": "Run baseline double pendulum simulation with canonical initial conditions",
+          "acceptance_criteria": "Successfully simulate the double pendulum for at least 30 seconds of simulation time using default parameters (m1=m2=1 kg, L1=L2=1 m, g=9.81 m/s^2) and initial conditions (theta1=pi/2, theta2=pi/2, omega1=omega2=0). Save the full state trajectory (theta1, omega1, theta2, omega2 vs time) to a CSV or NPZ file in the results/ directory.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_009",
+          "description": "Implement energy conservation metric and validate baseline",
+          "acceptance_criteria": "Implement a function that computes total mechanical energy (kinetic + potential) from the state vector. For the baseline 30-second simulation, compute energy at every time step and report the maximum relative energy drift |E(t) - E(0)| / |E(0)|. With dt=0.001 and RK4, energy drift must be < 1e-4 over the full simulation. Save energy vs time data to results/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_010",
+          "description": "Generate baseline visualization: trajectory and phase portrait plots",
+          "acceptance_criteria": "Produce and save to figures/ at least 3 plots: (1) theta1 and theta2 vs time, (2) Cartesian trajectory of the pendulum tip (x2, y2), (3) phase portrait (theta1 vs omega1 and theta2 vs omega2). Plots must have labeled axes, title, and legend. Files saved as PNG or PDF.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_3",
+      "name": "Core Research & Novel Approaches",
+      "order": 3,
+      "items": [
+        {
+          "id": "item_011",
+          "description": "Implement sensitivity to initial conditions demonstration",
+          "acceptance_criteria": "Simulate two double pendulums with initial theta1 differing by 1e-9 radians, all other parameters identical. Plot both trajectories on the same axes and show divergence over time. Compute and plot the log of the Euclidean distance between states over time. The divergence plot must show an approximately linear region (exponential growth) before saturation, visually confirming sensitive dependence on initial conditions. Save figures to figures/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_012",
+          "description": "Compute the maximum Lyapunov exponent numerically",
+          "acceptance_criteria": "Implement the algorithm for computing the maximum Lyapunov exponent (MLE) via the standard method of tracking separation of nearby trajectories with periodic renormalization (as described in the literature, e.g., Stachowiak & Okada 2006). For the canonical initial conditions, compute the MLE and report the value. The computed MLE must be positive (confirming chaos) and should be within the same order of magnitude as values reported in the literature (approximately 1-10 s^-1 depending on energy). Document the convergence of the MLE estimate as integration time increases.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_013",
+          "description": "Generate a Poincar\u00e9 section for the double pendulum",
+          "acceptance_criteria": "Implement Poincar\u00e9 section computation by detecting crossings of a chosen surface of section (e.g., theta2 = 0 with positive angular velocity). Run a long simulation (at least 1000 seconds or until at least 500 section crossings are accumulated) and plot the Poincar\u00e9 section (e.g., theta1 vs omega1 at the crossing events). The plot must show the characteristic mixed regular/chaotic structure expected at moderate energies. Compare qualitatively with Poincar\u00e9 sections from Stachowiak & Okada 2006 or Jim\u00e9nez L\u00f3pez & Garc\u00eda Garrido 2024. Save figure to figures/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_014",
+          "description": "Implement a symplectic integrator and compare with RK4",
+          "acceptance_criteria": "Implement a symplectic integrator (e.g., St\u00f6rmer-Verlet / leapfrog or a higher-order symplectic method) for the Hamiltonian formulation of the double pendulum. Run the same 30-second baseline simulation with both RK4 and the symplectic method at the same time step. Compare energy conservation: the symplectic integrator should show bounded energy oscillation (no secular drift) while RK4 may show drift at larger time steps. Produce a comparative energy drift plot saved to figures/. Document the trade-offs (accuracy per step vs long-term stability) with reference to prior work in sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_015",
+          "description": "Create a flip-count map showing chaotic vs regular regions in initial-condition space",
+          "acceptance_criteria": "For a grid of at least 100x100 initial conditions in (theta1, theta2) space with omega1=omega2=0, simulate each for a fixed time (e.g., 10 seconds) and count the number of times either pendulum flips over (|theta| crosses pi). Plot a 2D heatmap of flip counts vs initial conditions. The map must show the characteristic fractal boundary between regions of different flip counts, visually demonstrating the fractal structure of chaos in the system. Save to figures/flip_count_map.png.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_4",
+      "name": "Experiments & Evaluation",
+      "order": 4,
+      "items": [
+        {
+          "id": "item_016",
+          "description": "Convergence study: measure accuracy vs time-step size for both integrators",
+          "acceptance_criteria": "Run the baseline simulation with at least 5 different time steps (e.g., dt = 0.01, 0.005, 0.002, 0.001, 0.0005) for both RK4 and the symplectic integrator. For each, measure: (1) maximum energy drift, (2) final state deviation from a high-precision reference solution (dt=0.0001). Plot energy drift and final state error vs dt on log-log axes. RK4 should show 4th-order convergence (slope ~4). Save results to results/ and plots to figures/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_017",
+          "description": "Parameter sweep: investigate effect of mass ratio on Lyapunov exponent",
+          "acceptance_criteria": "Compute the maximum Lyapunov exponent for at least 10 different mass ratios m2/m1 in the range [0.1, 10] with fixed initial conditions and energy. Plot MLE vs mass ratio. Compare the trend with findings from the literature (e.g., parametric studies from Jim\u00e9nez L\u00f3pez & Garc\u00eda Garrido 2024 and mass-dependent chaos studies cited in sources.bib). Save data to results/ and plot to figures/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_018",
+          "description": "Parameter sweep: investigate effect of length ratio on chaotic fraction",
+          "acceptance_criteria": "For at least 10 length ratios L2/L1 in [0.1, 10], run the flip-count map (at reduced resolution, e.g., 50x50) and compute the fraction of initial conditions that exhibit chaotic behavior (e.g., flip count > 0 or MLE > 0). Plot chaotic fraction vs length ratio. Verify the finding from Jim\u00e9nez L\u00f3pez & Garc\u00eda Garrido 2024 that maximum chaotic fraction occurs near equal lengths (L1=L2). Save data and plot.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_019",
+          "description": "Performance benchmark: measure wall-clock time for key computations",
+          "acceptance_criteria": "Time the following operations: (1) single 30-second simulation at dt=0.001 with RK4, (2) same with symplectic integrator, (3) 100x100 flip-count map, (4) MLE computation for 1000 seconds of simulation. Report wall-clock times. Identify the computational bottleneck. Results must be from a clean run (not cached). Save benchmark data to results/benchmarks.json.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_020",
+          "description": "Validate simulation against an independent reference implementation",
+          "acceptance_criteria": "Run the same initial conditions and parameters through scipy.integrate.solve_ivp (with RK45 or DOP853 method and tight tolerances, rtol=1e-12, atol=1e-12) as a reference. Compare the custom RK4 solution against this reference at t=1, 5, 10, and 30 seconds. At t=1s, state vector components must agree to at least 6 significant figures. Document the divergence at later times as expected for a chaotic system. Save comparison data to results/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_5",
+      "name": "Analysis & Documentation",
+      "order": 5,
+      "items": [
+        {
+          "id": "item_021",
+          "description": "Write a comprehensive README.md documenting the project",
+          "acceptance_criteria": "README.md in repo root must include: (1) project title and description, (2) mathematical background section with the equations of motion, (3) installation/dependencies section, (4) usage instructions showing how to run the simulation and generate all figures, (5) summary of key results (energy conservation, Lyapunov exponents, flip-count map), (6) references section citing at least 5 key papers from sources.bib. Must be at least 500 words.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_022",
+          "description": "Summarize findings on chaos characterization with comparison to prior work",
+          "acceptance_criteria": "Written analysis (in README or a separate RESULTS.md) that: (1) reports the computed MLE and compares it to Shinbrot et al. 1992 (lambda ~ 7.5-7.9 s^-1 at their energy), (2) discusses the Poincar\u00e9 section structure with reference to Stachowiak & Okada 2006, (3) compares the flip-count map morphology to published fractal basin boundary results, (4) discusses the parameter sweep results in context of Jim\u00e9nez L\u00f3pez & Garc\u00eda Garrido 2024 findings on equal-length maximum chaos. Must cite specific values and figure numbers from at least 3 papers.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_023",
+          "description": "Discuss integrator comparison results and implications",
+          "acceptance_criteria": "Written analysis comparing RK4 and symplectic integrator that addresses: (1) convergence order confirmation from the convergence study, (2) long-term energy behavior differences, (3) trade-off between per-step accuracy and long-term structure preservation, (4) recommendation for which integrator to use for different tasks (short accurate trajectories vs long-term statistical properties). Must reference at least 2 sources from sources.bib on symplectic integration.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_024",
+          "description": "Ensure all code is clean, documented, and runnable",
+          "acceptance_criteria": "All Python files have module-level docstrings explaining their purpose. Key functions have docstrings with parameter descriptions. A requirements.txt or pyproject.toml lists all dependencies (numpy, matplotlib, scipy at minimum). Running 'python -m pytest' (if tests exist) or running the main simulation script produces no errors. The code follows PEP 8 style guidelines (verified by running a linter with no errors on critical files).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_025",
+          "description": "Compile final summary of all generated figures and result files",
+          "acceptance_criteria": "A manifest listing all files in figures/ and results/ directories with a one-line description of each. Must include at least: trajectory plot, phase portrait, energy conservation plot, sensitivity divergence plot, Poincar\u00e9 section, flip-count heatmap, convergence study plots, parameter sweep plots, and benchmark data. All listed files must exist and be non-empty.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_items": 25,
+    "completed": 0,
+    "in_progress": 0,
+    "failed": 0,
+    "pending": 25
+  }
+}
