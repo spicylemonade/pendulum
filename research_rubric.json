@@ -102,24 +102,24 @@
           "id": "item_008",
           "description": "Run baseline double pendulum simulation with canonical initial conditions",
           "acceptance_criteria": "Successfully simulate the double pendulum for at least 30 seconds of simulation time using default parameters (m1=m2=1 kg, L1=L2=1 m, g=9.81 m/s^2) and initial conditions (theta1=pi/2, theta2=pi/2, omega1=omega2=0). Save the full state trajectory (theta1, omega1, theta2, omega2 vs time) to a CSV or NPZ file in the results/ directory.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "30s simulation completed (30001 steps, dt=0.001). Trajectory saved to results/baseline_trajectory.npz.",
           "error": null
         },
         {
           "id": "item_009",
           "description": "Implement energy conservation metric and validate baseline",
           "acceptance_criteria": "Implement a function that computes total mechanical energy (kinetic + potential) from the state vector. For the baseline 30-second simulation, compute energy at every time step and report the maximum relative energy drift |E(t) - E(0)| / |E(0)|. With dt=0.001 and RK4, energy drift must be < 1e-4 over the full simulation. Save energy vs time data to results/.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "total_energy() in pendulum.py. Max absolute drift: 3.85e-08 J. Max relative drift (normalized by energy scale 29.43 J): 1.31e-09, well below 1e-4. Data saved to results/energy_conservation.json. Energy drift plot saved to figures/energy_drift.png.",
           "error": null
         },
         {
           "id": "item_010",
           "description": "Generate baseline visualization: trajectory and phase portrait plots",
           "acceptance_criteria": "Produce and save to figures/ at least 3 plots: (1) theta1 and theta2 vs time, (2) Cartesian trajectory of the pendulum tip (x2, y2), (3) phase portrait (theta1 vs omega1 and theta2 vs omega2). Plots must have labeled axes, title, and legend. Files saved as PNG or PDF.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "4 publication-quality figures generated: (1) figures/theta_vs_time.png - angular displacement, (2) figures/tip_trajectory.png - Cartesian trajectory, (3) figures/phase_portraits.png - dual phase portrait, (4) figures/energy_drift.png. All saved as PNG (300 DPI) and PDF.",
           "error": null
         }
       ]
@@ -268,9 +268,9 @@
   ],
   "summary": {
     "total_items": 25,
-    "completed": 7,
+    "completed": 10,
     "in_progress": 0,
     "failed": 0,
-    "pending": 18
+    "pending": 15
   }
 }

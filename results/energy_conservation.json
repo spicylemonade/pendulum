@@ -1,0 +1,10 @@
+{
+  "E0": -1.8020677649453305e-15,
+  "E_scale": 29.43,
+  "max_absolute_drift": 3.846495213806016e-08,
+  "max_relative_drift": 1.3069980339130195e-09,
+  "drift_below_1e-4": true,
+  "dt": 0.001,
+  "T_sim": 30.0,
+  "n_steps": 30000
+}
