@@ -1,0 +1,36 @@
+         1472047 function calls in 2.364 seconds
+
+   Ordered by: cumulative time
+   List reduced from 84 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    2.364    2.364 /home/codex/work/repo/sim/pendulum.py:35(simulate)
+        1    0.078    0.078    2.363    2.363 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/ivp.py:159(solve_ivp)
+    14763    0.023    0.000    1.736    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py:175(step)
+    14763    0.157    0.000    1.713    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py:111(_step_impl)
+    15204    0.420    0.000    1.401    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py:14(rk_step)
+    91226    0.042    0.000    0.969    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py:152(fun)
+    91226    0.042    0.000    0.927    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py:22(fun_wrapped)
+    91226    0.033    0.000    0.867    0.000 /home/codex/work/repo/sim/pendulum.py:49(rhs)
+    91226    0.782    0.000    0.834    0.000 /home/codex/work/repo/sim/pendulum.py:10(derivatives)
+    14763    0.013    0.000    0.383    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py:251(__call__)
+    14763    0.153    0.000    0.368    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py:560(_call_impl)
+    15204    0.020    0.000    0.148    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py:108(_estimate_error_norm)
+    14763    0.072    0.000    0.131    0.000 /home/codex/.local/lib/python3.10/site-packages/numpy/lib/_shape_base_impl.py:1204(tile)
+    29526    0.020    0.000    0.102    0.000 /home/codex/.local/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:51(_wrapfunc)
+    15207    0.019    0.000    0.093    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/common.py:63(norm)
+    14763    0.009    0.000    0.086    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py:208(dense_output)
+    14763    0.009    0.000    0.077    0.000 /home/codex/.local/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:3453(cumprod)
+    14763    0.017    0.000    0.077    0.000 /home/codex/.local/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py:178(_dense_output_impl)
+    15207    0.044    0.000    0.071    0.000 /home/codex/.local/lib/python3.10/site-packages/numpy/linalg/_linalg.py:2575(norm)
+   105989    0.059    0.000    0.059    0.000 {built-in method numpy.array}
+
+
+
+--- Analysis ---
+The derivatives() function is called at every RK45 internal
+step. For 100s of simulation, this accounts for the majority
+of runtime. Potential optimizations:
+- Numba JIT compilation of derivatives() (see numba.pydata.org)
+- Vectorized batch evaluation using numpy
+- C extension via Cython for inner loop

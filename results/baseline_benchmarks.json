@@ -1,0 +1,7 @@
+{
+  "method": "RK45",
+  "sim_time_sec": 100.0,
+  "wall_time_sec": 1.9372,
+  "n_steps": 100000,
+  "max_energy_drift_pct": 2.952597120552558e-07
+}

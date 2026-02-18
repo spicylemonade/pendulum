@@ -1,0 +1,44 @@
+{
+  "RK45_dt0.1": {
+    "method": "RK45",
+    "dt": 0.1,
+    "wall_time_sec": 1.5093,
+    "max_energy_drift_pct": 2.7723782910103216e-07,
+    "n_steps": 1000
+  },
+  "Symplectic_dt0.1": {
+    "method": "Symplectic",
+    "dt": 0.1,
+    "wall_time_sec": 0.1624,
+    "max_energy_drift_pct": 0.6645976330124856,
+    "n_steps": 1000
+  },
+  "RK45_dt0.01": {
+    "method": "RK45",
+    "dt": 0.01,
+    "wall_time_sec": 1.7834,
+    "max_energy_drift_pct": 2.905046206232991e-07,
+    "n_steps": 10000
+  },
+  "Symplectic_dt0.01": {
+    "method": "Symplectic",
+    "dt": 0.01,
+    "wall_time_sec": 1.4158,
+    "max_energy_drift_pct": 0.007684063292116184,
+    "n_steps": 10000
+  },
+  "RK45_dt0.001": {
+    "method": "RK45",
+    "dt": 0.001,
+    "wall_time_sec": 1.9852,
+    "max_energy_drift_pct": 2.952597120552558e-07,
+    "n_steps": 100000
+  },
+  "Symplectic_dt0.001": {
+    "method": "Symplectic",
+    "dt": 0.001,
+    "wall_time_sec": 13.1796,
+    "max_energy_drift_pct": 7.760508366776526e-05,
+    "n_steps": 100000
+  }
+}
