@@ -1,0 +1,276 @@
+{
+  "version": "1.0",
+  "created_at": "2026-02-18T00:00:00Z",
+  "updated_at": "2026-02-18T11:36:40.849046+00:00",
+  "current_agent": "orchestrator",
+  "agent_status": {
+    "orchestrator": {
+      "status": "completed",
+      "started_at": "2026-02-18T00:00:00Z",
+      "completed_at": "2026-02-18T11:36:40.849017+00:00",
+      "error": null
+    },
+    "researcher": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "writer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "reviewer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    }
+  },
+  "phases": [
+    {
+      "id": "phase_1",
+      "name": "Problem Analysis & Literature Review",
+      "order": 1,
+      "items": [
+        {
+          "id": "item_001",
+          "description": "Analyze repository structure and define project scope",
+          "acceptance_criteria": "A written document (README.md or docs/scope.md) listing all existing repo files, empty directories, config purpose, and a clear scope statement: 'Build a minimal double pendulum simulator using Lagrangian mechanics with real-time visualization.'",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_002",
+          "description": "Conduct literature review on double pendulum dynamics and simulation methods",
+          "acceptance_criteria": "Web search performed for at least 10 relevant sources covering: (a) Lagrangian/Hamiltonian derivations of double pendulum equations of motion, (b) numerical integration methods (RK4, symplectic integrators), (c) chaos theory and Lyapunov exponents in double pendula, (d) existing open-source simulators. All sources recorded in sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_003",
+          "description": "Create and populate sources.bib with BibTeX entries for all consulted references",
+          "acceptance_criteria": "File sources.bib exists in repo root with at least 10 valid BibTeX entries. Entries must include: at least 2 textbook references on classical mechanics, at least 3 papers on double pendulum dynamics or chaos, at least 2 references on numerical integration schemes, and at least 3 references to open-source code repositories or tutorials.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_004",
+          "description": "Derive and document the equations of motion for the double pendulum",
+          "acceptance_criteria": "A markdown file (docs/equations.md) containing the full Lagrangian derivation for a double pendulum with masses m1, m2, lengths l1, l2, and angles theta1, theta2. Must include: the Lagrangian L = T - V, the resulting two coupled second-order ODEs, and their reduction to four first-order ODEs suitable for numerical integration. Must cite at least 2 sources from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_005",
+          "description": "Survey existing double pendulum simulators and identify design trade-offs",
+          "acceptance_criteria": "A comparison table (in docs/survey.md) of at least 3 existing double pendulum implementations found via web search, listing: language, integration method, visualization approach, lines of code, and features. Must cite each implementation in sources.bib. Must conclude with a justified choice of language (Python) and integration approach for this project.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_2",
+      "name": "Baseline Implementation & Metrics",
+      "order": 2,
+      "items": [
+        {
+          "id": "item_006",
+          "description": "Implement the double pendulum equations of motion as a Python function",
+          "acceptance_criteria": "A Python file (sim/pendulum.py) containing a function derivatives(state, t, params) that takes state=[theta1, omega1, theta2, omega2], time t, and params dict {m1, m2, l1, l2, g}, and returns [dtheta1/dt, domega1/dt, dtheta2/dt, domega2/dt]. Function must match the equations derived in item_004. File must be < 80 lines total.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_007",
+          "description": "Implement numerical integration using SciPy's solve_ivp with RK45",
+          "acceptance_criteria": "A function simulate(initial_state, params, t_span, dt) in sim/pendulum.py that uses scipy.integrate.solve_ivp with RK45 method to integrate the equations of motion. Returns a dict with keys 'time', 'theta1', 'omega1', 'theta2', 'omega2' as NumPy arrays. Total file remains < 120 lines.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_008",
+          "description": "Verify energy conservation as a correctness metric",
+          "acceptance_criteria": "A function total_energy(state, params) in sim/pendulum.py that computes kinetic + potential energy. A test script (tests/test_energy.py) that runs a 30-second simulation with dt=0.01 and asserts that max energy drift is < 1% of initial energy for RK45 with default tolerances. Test passes when run with pytest.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_009",
+          "description": "Implement basic Matplotlib visualization of pendulum trajectories",
+          "acceptance_criteria": "A file sim/visualize.py with a function plot_trajectories(result) that takes the output of simulate() and produces a 2x1 subplot figure: top panel shows theta1(t) and theta2(t), bottom panel shows the phase portrait (theta1 vs omega1). Figure saved to figures/baseline_trajectory.png. File < 60 lines.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_010",
+          "description": "Create a minimal animated visualization of the double pendulum",
+          "acceptance_criteria": "A function animate_pendulum(result, params) in sim/visualize.py that uses matplotlib.animation.FuncAnimation to produce an animation of the two-link pendulum swinging. Must convert (theta1, theta2) to Cartesian (x,y) coordinates for both bobs. Animation saved as figures/pendulum_animation.gif. Total visualize.py < 120 lines.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_011",
+          "description": "Establish baseline performance benchmarks",
+          "acceptance_criteria": "A script benchmarks/timing.py that measures wall-clock time for simulating 100 seconds of double pendulum motion with dt=0.001 using RK45. Records result to results/baseline_benchmarks.json with keys: 'method', 'sim_time_sec', 'wall_time_sec', 'n_steps', 'max_energy_drift_pct'. Must run in < 10 seconds on a standard machine.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_3",
+      "name": "Core Research & Novel Approaches",
+      "order": 3,
+      "items": [
+        {
+          "id": "item_012",
+          "description": "Implement a symplectic (Stormer-Verlet) integrator and compare energy conservation",
+          "acceptance_criteria": "A function simulate_symplectic(initial_state, params, t_span, dt) in sim/pendulum.py using the Stormer-Verlet method for the Hamiltonian formulation. Energy drift over a 100-second simulation must be < 0.01% of initial energy (compared to ~1% for RK45 at the same step size). Results documented in results/integrator_comparison.json. Must cite relevant numerical methods literature from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_013",
+          "description": "Investigate sensitivity to initial conditions (chaos characterization)",
+          "acceptance_criteria": "A script experiments/chaos.py that runs two simulations with initial theta1 differing by 1e-9 radians and plots the divergence |delta_theta1(t)| over time on a log scale. Must demonstrate exponential divergence. Saves figure to figures/chaos_divergence.png. Must reference Lyapunov exponent theory from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_014",
+          "description": "Compute the largest Lyapunov exponent numerically",
+          "acceptance_criteria": "A function lyapunov_exponent(params, initial_state, t_total, dt) in sim/analysis.py that estimates the largest Lyapunov exponent using the standard algorithm (Benettin et al.). Returns a positive float for chaotic initial conditions. Value must be within the range reported in prior literature (approximately 0.5-5.0 /s for typical parameters). Cite the method's source in sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_015",
+          "description": "Generate a Poincare section for the double pendulum",
+          "acceptance_criteria": "A function poincare_section(params, initial_state, t_total, dt) in sim/analysis.py that records (theta2, omega2) each time theta1 crosses zero with positive velocity. Produces a scatter plot saved to figures/poincare_section.png showing characteristic structure (mix of islands and chaotic sea). Must cite Poincare section methodology from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_016",
+          "description": "Create a flip-count map over initial condition space",
+          "acceptance_criteria": "A script experiments/flip_map.py that sweeps theta1 in [-pi, pi] and theta2 in [-pi, pi] on a 200x200 grid (omega1=omega2=0), simulates for 10 seconds, and counts the number of full flips of the second pendulum. Saves a color-mapped image to figures/flip_count_map.png showing fractal-like basin boundaries. Comparison to similar maps in literature must be noted.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_4",
+      "name": "Experiments & Evaluation",
+      "order": 4,
+      "items": [
+        {
+          "id": "item_017",
+          "description": "Compare RK45 vs symplectic integrator across multiple metrics",
+          "acceptance_criteria": "A script experiments/compare_integrators.py that runs both integrators for 100s at dt values [0.1, 0.01, 0.001] and records: (a) energy drift, (b) wall-clock time, (c) qualitative trajectory agreement. Results saved to results/integrator_comparison.json and a summary plot to figures/integrator_comparison.png. Must reference prior work on integrator comparison from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_018",
+          "description": "Validate simulator against known analytical limits",
+          "acceptance_criteria": "A test file tests/test_limits.py with at least 3 tests: (1) small-angle regime matches linearized solution (< 1% error for theta < 0.1 rad over 10s), (2) single pendulum limit (m2=0 or l2=0) matches exact single pendulum solution, (3) energy is exactly conserved for the symplectic integrator up to floating point precision. All tests pass with pytest.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_019",
+          "description": "Parameter sensitivity study across mass and length ratios",
+          "acceptance_criteria": "A script experiments/param_sweep.py that varies m2/m1 in [0.1, 0.5, 1.0, 2.0, 10.0] and l2/l1 in [0.1, 0.5, 1.0, 2.0] (20 combinations), simulates for 30s each, and records the Lyapunov exponent estimate. Results saved to results/param_sensitivity.json and a heatmap to figures/param_sensitivity.png.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_020",
+          "description": "Run full test suite and ensure all tests pass",
+          "acceptance_criteria": "Running 'pytest tests/' from the repo root passes with 0 failures. Coverage report generated via pytest-cov shows >= 80% line coverage of sim/ directory. Coverage report saved to results/coverage.txt.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_021",
+          "description": "Profile simulation performance and identify bottlenecks",
+          "acceptance_criteria": "A script benchmarks/profile.py that uses cProfile to profile a 100s simulation and saves the top 20 functions by cumulative time to results/profile_results.txt. If the derivatives function accounts for > 50% of runtime, document this finding and note whether vectorization or Numba JIT could help, with citations.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_5",
+      "name": "Analysis & Documentation",
+      "order": 5,
+      "items": [
+        {
+          "id": "item_022",
+          "description": "Write a comprehensive project README with usage instructions",
+          "acceptance_criteria": "README.md updated to include: project title, one-paragraph description, installation instructions (pip install -r requirements.txt), usage examples for running simulation/animation/experiments, description of project structure, and a 'References' section citing at least 5 entries from sources.bib. Must be < 200 lines.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_023",
+          "description": "Create requirements.txt with all Python dependencies",
+          "acceptance_criteria": "File requirements.txt in repo root listing: numpy, scipy, matplotlib, and pytest. Each pinned to a minimum version (e.g., numpy>=1.20). Running 'pip install -r requirements.txt' succeeds without errors.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_024",
+          "description": "Write a summary report of findings and results",
+          "acceptance_criteria": "A file docs/report.md containing: (1) Introduction with problem statement, (2) Methods section describing integration schemes and analysis tools, (3) Results section with embedded references to all figures in figures/, (4) Discussion comparing findings to prior work cited in sources.bib (at least 3 explicit comparisons), (5) Conclusion. Total length 500-1500 words.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_025",
+          "description": "Final code quality check: linting, docstrings, and minimality",
+          "acceptance_criteria": "All Python files in sim/ have module-level and function-level docstrings. No file in the project exceeds 150 lines. Total Python LOC across sim/, tests/, experiments/, benchmarks/ is < 800 lines. No unused imports (verified by running 'python -m py_compile' on each file without warnings).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_items": 25,
+    "completed": 0,
+    "in_progress": 0,
+    "failed": 0,
+    "pending": 25
+  }
+}
