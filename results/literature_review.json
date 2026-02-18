@@ -1,0 +1,88 @@
+{
+  "item_id": "item_002",
+  "title": "Literature Review: Double Pendulum Dynamics and Simulation Methods",
+  "date": "2026-02-18",
+  "sources_reviewed": 15,
+  "categories": {
+    "lagrangian_hamiltonian_derivation": [
+      {
+        "title": "Double pendulum (Wikipedia)",
+        "key_findings": "Complete derivation of equations of motion using Lagrangian mechanics. Defines generalized coordinates (theta1, theta2), kinetic/potential energy, Euler-Lagrange equations. Standard reference for the coupled nonlinear ODEs.",
+        "url": "https://en.wikipedia.org/wiki/Double_pendulum"
+      },
+      {
+        "title": "Double pendulum: Lagrangian formulation (dassencio.org)",
+        "key_findings": "Clear derivation with explicit expressions for angular accelerations. Companion Hamiltonian formulation also available. Used as basis for the dassencio/double-pendulum Python simulator.",
+        "url": "https://dassencio.org/33"
+      },
+      {
+        "title": "The Double Pendulum (SciPython)",
+        "key_findings": "Python implementation with matplotlib animation. Uses scipy.integrate.odeint for numerical integration. Good pedagogical resource showing the complete workflow from equations to visualization.",
+        "url": "https://scipython.com/blog/the-double-pendulum/"
+      }
+    ],
+    "numerical_integration_methods": [
+      {
+        "title": "Hairer, Lubich, Wanner - Geometric Numerical Integration (2006)",
+        "key_findings": "Definitive reference on structure-preserving numerical methods. Covers symplectic integrators (Stormer-Verlet, leapfrog, higher-order splitting methods), backward error analysis, and long-term energy behavior. Shows that symplectic integrators preserve a modified Hamiltonian, leading to bounded energy oscillations.",
+        "url": "https://link.springer.com/book/10.1007/3-540-30666-8"
+      },
+      {
+        "title": "Symplectic integrator (Wikipedia)",
+        "key_findings": "Comprehensive overview of symplectic integration methods. Stormer-Verlet is 2nd-order, time-reversible, area-preserving. For separable Hamiltonians H=T+V, the method becomes explicit. Higher-order methods via Yoshida composition.",
+        "url": "https://en.wikipedia.org/wiki/Symplectic_integrator"
+      },
+      {
+        "title": "Deterministic chaos: A pedagogical review of the double pendulum case (SciELO, 2024)",
+        "key_findings": "Comprehensive pedagogical review using 4th-order Runge-Kutta. Covers Hamiltonian formalism, Python implementation, Lyapunov exponent computation. Discusses computational efficiency considerations.",
+        "url": "https://www.scielo.br/j/rbef/a/SsWk5qnzBgvmYB4hRtkbwqM/?lang=en"
+      }
+    ],
+    "chaos_lyapunov_exponents": [
+      {
+        "title": "Shinbrot, Grebogi, Wisdom, Yorke - Chaos in a double pendulum (1992)",
+        "key_findings": "Foundational paper. Experimental Lyapunov exponent: 7.5 +/- 1.5 s^-1. Numerical: 7.9 +/- 0.4 s^-1. Demonstrates sensitive dependence on initial conditions both experimentally and numerically. Published in American Journal of Physics 60, 491-499.",
+        "url": "https://ui.adsabs.harvard.edu/abs/1992AmJPh..60..491S/abstract"
+      },
+      {
+        "title": "Stachowiak & Okada - A numerical analysis of chaos in the double pendulum (2006)",
+        "key_findings": "Poincare sections and bifurcation diagrams at different energy levels. Uses Bulirsch-Stoer method with Richardson extrapolation. Shows transition from regular to chaotic motion as energy increases. Lyapunov exponents confirm: zero at low energy, positive at high energy.",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0960077905006703"
+      },
+      {
+        "title": "Jimenez Lopez & Garcia Garrido - Chaos and Regularity in the Double Pendulum with Lagrangian Descriptors (2024)",
+        "key_findings": "Uses Lagrangian descriptors to characterize chaotic vs regular regions. Key finding: maximum chaotic fraction occurs at equal pendulum lengths for a given mass ratio. Parametric study of chaos growth/decay vs energy and model parameters. Published in IJBC 34(16), 2450201.",
+        "url": "https://arxiv.org/abs/2403.07000"
+      }
+    ],
+    "poincare_sections_bifurcation": [
+      {
+        "title": "Stachowiak & Okada 2006 (same as above)",
+        "key_findings": "Poincare sections constructed with surface u1=0, du1/dt>0. Shows regular motion at low energy, mixed phase space at moderate energy, and global chaos at high energy.",
+        "url": "https://hal.science/hal-01389907/document"
+      },
+      {
+        "title": "Poincare section clicker (Leo C. Stein)",
+        "key_findings": "Interactive tool for exploring Poincare sections. Demonstrates: quasiperiodic orbits trace curves, chaotic orbits fill areas. Low energy shows nested tori (integrable-like), high energy shows dust (chaos).",
+        "url": "https://duetosymmetry.com/tool/poincare-section-clicker-toy/"
+      },
+      {
+        "title": "Regular and chaotic phase space fraction in the double pendulum (arXiv 2023)",
+        "key_findings": "Studies transition between regular and chaotic behavior globally. Computes fraction of initial conditions leading to chaos via Poincare sections. Chaotic fraction near zero at low energy (small oscillations approximation valid).",
+        "url": "https://arxiv.org/html/2312.13436v1"
+      }
+    ],
+    "flip_count_maps_fractals": [
+      {
+        "title": "Heyl - The Double Pendulum Fractal",
+        "key_findings": "Flip-time maps with theta1, theta2 in [-pi, pi]. Color indicates elapsed time before first flip. Shows fractal boundary structure. Energetic constraint: 3cos(theta1)+cos(theta2)>2 prevents flipping.",
+        "url": "https://www.famaf.unc.edu.ar/~vmarconi/fiscomp/Double.pdf"
+      },
+      {
+        "title": "A novel global perspective: fractal basins in double pendulum (2024)",
+        "key_findings": "Proposes algorithms for computing flip count and final angular position. Reveals petal-like structure with rotational symmetry and fractal features. Uses average maximum Lyapunov exponent heatmap to correlate mass ratio with chaos level.",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S0960077924012463"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "item_id": "item_004",
+  "title": "Survey of Open-Source Double Pendulum Simulators",
+  "date": "2026-02-18",
+  "implementations": [
+    {
+      "name": "dassencio/double-pendulum",
+      "url": "https://github.com/dassencio/double-pendulum",
+      "language": "Python 3",
+      "integration_method": "Runge-Kutta (custom implementation)",
+      "formulations": ["Lagrangian (dp_lagrangian.py)", "Hamiltonian (dp_hamiltonian.py)"],
+      "visualization": "matplotlib animation",
+      "energy_validation": "Yes - tracks maximum energy change to detect unstable simulations",
+      "notes": "Clean, well-documented. Companion theory pages at dassencio.org/33 and dassencio.org/46."
+    },
+    {
+      "name": "josmarcristello/Double-Pendulum-Simulation",
+      "url": "https://github.com/josmarcristello/Double-Pendulum-Simulation",
+      "language": "Python",
+      "integration_method": "4th-order Runge-Kutta",
+      "formulations": ["Lagrangian"],
+      "visualization": "matplotlib plots and animation",
+      "energy_validation": "Yes - included in technical report",
+      "notes": "MIT License. Includes detailed technical/explained report."
+    },
+    {
+      "name": "scipython double pendulum",
+      "url": "https://scipython.com/blog/the-double-pendulum/",
+      "language": "Python",
+      "integration_method": "scipy.integrate.odeint (LSODA)",
+      "formulations": ["Lagrangian"],
+      "visualization": "matplotlib animation with trace",
+      "energy_validation": "Mentioned but not primary focus",
+      "notes": "Pedagogical tutorial. Good animation code."
+    },
+    {
+      "name": "ellawang44/double_pendulum_sim",
+      "url": "https://github.com/ellawang44/double_pendulum_sim",
+      "language": "Python",
+      "integration_method": "Configurable (multiple options)",
+      "formulations": ["Lagrangian"],
+      "visualization": "matplotlib plots",
+      "energy_validation": "Not primary focus",
+      "notes": "PHYS3001 project. Includes Lyapunov exponent computation for varying initial conditions and parameters. Multiple input groups: parameters, numerical integration, single/multiple Lyapunov exponents, plots."
+    },
+    {
+      "name": "shinben0327/Double-Pendulum-Lyapunov",
+      "url": "https://github.com/shinben0327/Double-Pendulum-Lyapunov",
+      "language": "Python",
+      "integration_method": "Not specified (likely scipy)",
+      "formulations": ["Lagrangian"],
+      "visualization": "Heatmaps of average max Lyapunov exponent",
+      "energy_validation": "Not mentioned",
+      "notes": "Focused on Lyapunov exponent computation. Varies masses 0.5-30 kg."
+    }
+  ],
+  "best_practices_summary": [
+    "Use 4th-order Runge-Kutta (RK4) as primary integrator for accuracy",
+    "Accept parameters (m1, m2, L1, L2, g) as function arguments, not hardcoded",
+    "Track energy conservation as a validation metric throughout simulation",
+    "Store state as [theta1, omega1, theta2, omega2] vector for clean ODE interface",
+    "Use both Lagrangian (simpler) and Hamiltonian (needed for symplectic methods) formulations",
+    "Implement from-scratch RK4 for educational value; use scipy for validation",
+    "Save full trajectory data for post-processing analysis"
+  ]
+}
