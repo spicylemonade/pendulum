@@ -149,31 +149,31 @@
           "id": "item_013",
           "description": "Investigate sensitivity to initial conditions (chaos characterization)",
           "acceptance_criteria": "A script experiments/chaos.py that runs two simulations with initial theta1 differing by 1e-9 radians and plots the divergence |delta_theta1(t)| over time on a log scale. Must demonstrate exponential divergence. Saves figure to figures/chaos_divergence.png. Must reference Lyapunov exponent theory from sources.bib.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Used high-energy IC (theta=2.0 rad) showing exponential divergence from 1e-9 to ~9 rad over 30s. Cites Shinbrot and Benettin.",
           "error": null
         },
         {
           "id": "item_014",
           "description": "Compute the largest Lyapunov exponent numerically",
           "acceptance_criteria": "A function lyapunov_exponent(params, initial_state, t_total, dt) in sim/analysis.py that estimates the largest Lyapunov exponent using the standard algorithm (Benettin et al.). Returns a positive float for chaotic initial conditions. Value must be within the range reported in prior literature (approximately 0.5-5.0 /s for typical parameters). Cite the method's source in sources.bib.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Benettin algorithm returns lambda=1.17/s for chaotic IC (theta=2.0), within 0.5-5.0 range. Cites Benettin (1980), Skokos (2010).",
           "error": null
         },
         {
           "id": "item_015",
           "description": "Generate a Poincare section for the double pendulum",
           "acceptance_criteria": "A function poincare_section(params, initial_state, t_total, dt) in sim/analysis.py that records (theta2, omega2) each time theta1 crosses zero with positive velocity. Produces a scatter plot saved to figures/poincare_section.png showing characteristic structure (mix of islands and chaotic sea). Must cite Poincare section methodology from sources.bib.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Poincare section with 6 ICs over 200s shows mix of islands and chaotic sea. Uses linear interpolation for zero-crossing detection. Cites Stachowiak (2006).",
           "error": null
         },
         {
           "id": "item_016",
           "description": "Create a flip-count map over initial condition space",
           "acceptance_criteria": "A script experiments/flip_map.py that sweeps theta1 in [-pi, pi] and theta2 in [-pi, pi] on a 200x200 grid (omega1=omega2=0), simulates for 10 seconds, and counts the number of full flips of the second pendulum. Saves a color-mapped image to figures/flip_count_map.png showing fractal-like basin boundaries. Comparison to similar maps in literature must be noted.",
-          "status": "pending",
+          "status": "in_progress",
           "notes": null,
           "error": null
         }
