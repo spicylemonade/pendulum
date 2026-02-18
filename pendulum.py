@@ -162,3 +162,53 @@ def cartesian_positions(state, L1, L2):
     x2 = x1 + L2 * np.sin(theta2)
     y2 = y1 - L2 * np.cos(theta2)
     return x1, y1, x2, y2
+
+
+def implicit_midpoint_integrate(deriv_func, state0, dt, n_steps,
+                                 max_iter=8, tol=1e-12, **params):
+    """Implicit midpoint integrator (2nd-order, symplectic).
+
+    Symplectic for general (non-separable) Hamiltonian systems.
+    Uses fixed-point iteration to solve the implicit equation.
+
+    Parameters
+    ----------
+    deriv_func : callable
+        Function f(state, **params) returning derivatives.
+    state0 : array_like
+        Initial state vector.
+    dt : float
+        Time step.
+    n_steps : int
+        Number of integration steps.
+    max_iter : int
+        Maximum fixed-point iterations per step.
+    tol : float
+        Convergence tolerance.
+    **params : dict
+        Parameters passed to deriv_func.
+
+    Returns
+    -------
+    numpy.ndarray, shape (n_steps + 1, n)
+        Full trajectory.
+    """
+    state = np.array(state0, dtype=np.float64)
+    n = len(state)
+    trajectory = np.empty((n_steps + 1, n))
+    trajectory[0] = state
+
+    for i in range(n_steps):
+        # Initial guess: explicit Euler midpoint
+        mid = state + 0.5 * dt * deriv_func(state, **params)
+        for _ in range(max_iter):
+            f_mid = deriv_func(mid, **params)
+            mid_new = state + 0.5 * dt * f_mid
+            if np.max(np.abs(mid_new - mid)) < tol:
+                mid = mid_new
+                break
+            mid = mid_new
+        state = 2 * mid - state
+        trajectory[i + 1] = state
+
+    return trajectory

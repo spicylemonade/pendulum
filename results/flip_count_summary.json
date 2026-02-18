@@ -1,0 +1,8 @@
+{
+  "grid_size": 100,
+  "dt": 0.02,
+  "T_sim": 10.0,
+  "max_flips": 15,
+  "mean_flips": 4.4576,
+  "fraction_with_flips": 0.7134
+}

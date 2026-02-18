@@ -1,0 +1,10 @@
+{
+  "method_symplectic": "implicit_midpoint",
+  "dt_coarse": 0.01,
+  "dt_fine": 0.001,
+  "rk4_max_drift_coarse": 6.034677416256262e-05,
+  "symplectic_max_drift_coarse": 0.0020012003246733384,
+  "rk4_max_drift_fine": 1.3069980339130195e-09,
+  "symplectic_max_drift_fine": 2.7099418099782364e-05,
+  "note": "Implicit midpoint is 2nd-order symplectic, preserves phase space structure. RK4 is 4th-order but not symplectic."
+}
