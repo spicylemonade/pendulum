@@ -47,23 +47,23 @@
           "id": "item_002",
           "description": "Conduct literature review on double pendulum dynamics and simulation methods",
           "acceptance_criteria": "Web search performed for at least 10 relevant sources covering: (a) Lagrangian/Hamiltonian derivations of double pendulum equations of motion, (b) numerical integration methods (RK4, symplectic integrators), (c) chaos theory and Lyapunov exponents in double pendula, (d) existing open-source simulators. All sources recorded in sources.bib.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Conducted 6 web searches covering all 4 required areas. Found 15+ sources including textbooks, journal papers, and GitHub repos. All recorded in sources.bib.",
           "error": null
         },
         {
           "id": "item_003",
           "description": "Create and populate sources.bib with BibTeX entries for all consulted references",
           "acceptance_criteria": "File sources.bib exists in repo root with at least 10 valid BibTeX entries. Entries must include: at least 2 textbook references on classical mechanics, at least 3 papers on double pendulum dynamics or chaos, at least 2 references on numerical integration schemes, and at least 3 references to open-source code repositories or tutorials.",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "sources.bib contains 15 BibTeX entries: 2 textbooks (Goldstein, Landau), 4 papers on chaos/dynamics (Shinbrot, Stachowiak, Levien, d'Alessio), 3 on numerical methods (Hairer x2, Ruth), 2 on Lyapunov (Benettin, Skokos), 4 code/tutorial refs (Dassencio, Cristello, SciPython, Wikipedia x2).",
           "error": null
         },
         {
           "id": "item_004",
           "description": "Derive and document the equations of motion for the double pendulum",
           "acceptance_criteria": "A markdown file (docs/equations.md) containing the full Lagrangian derivation for a double pendulum with masses m1, m2, lengths l1, l2, and angles theta1, theta2. Must include: the Lagrangian L = T - V, the resulting two coupled second-order ODEs, and their reduction to four first-order ODEs suitable for numerical integration. Must cite at least 2 sources from sources.bib.",
-          "status": "pending",
+          "status": "in_progress",
           "notes": null,
           "error": null
         },
@@ -268,9 +268,9 @@
   ],
   "summary": {
     "total_items": 25,
-    "completed": 1,
-    "in_progress": 0,
+    "completed": 3,
+    "in_progress": 1,
     "failed": 0,
-    "pending": 24
+    "pending": 21
   }
 }

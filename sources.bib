@@ -1,2 +1,183 @@
 % Bibliography for research project
 % Double Pendulum Simulator - Sources and References
+
+% === Textbooks on Classical Mechanics ===
+
+@book{goldstein2002classical,
+  title={Classical Mechanics},
+  author={Goldstein, Herbert and Poole, Charles P. and Safko, John L.},
+  year={2002},
+  edition={3rd},
+  publisher={Addison-Wesley},
+  note={Standard reference for Lagrangian and Hamiltonian mechanics}
+}
+
+@book{landau1976mechanics,
+  title={Mechanics},
+  author={Landau, Lev D. and Lifshitz, Evgeny M.},
+  year={1976},
+  edition={3rd},
+  publisher={Butterworth-Heinemann},
+  series={Course of Theoretical Physics, Vol.~1},
+  note={Classic text on analytical mechanics including Lagrangian formulation}
+}
+
+% === Papers on Double Pendulum Dynamics and Chaos ===
+
+@article{shinbrot1992chaos,
+  title={Chaos in a double pendulum},
+  author={Shinbrot, Troy and Grebogi, Celso and Wisdom, Jack and Yorke, James A.},
+  journal={American Journal of Physics},
+  volume={60},
+  number={6},
+  pages={491--499},
+  year={1992},
+  publisher={American Association of Physics Teachers},
+  doi={10.1119/1.16860},
+  note={Classic experimental/numerical study of chaos in the double pendulum, reports Lyapunov exponent lambda approx 7.9 /s}
+}
+
+@article{stachowiak2006numerical,
+  title={A numerical analysis of chaos in the double pendulum},
+  author={Stachowiak, Tomasz and Okada, Toshio},
+  journal={Chaos, Solitons \& Fractals},
+  volume={29},
+  number={2},
+  pages={417--422},
+  year={2006},
+  publisher={Elsevier},
+  doi={10.1016/j.chaos.2005.08.032},
+  note={Poincare sections, bifurcation diagrams, and Lyapunov exponents for the double pendulum}
+}
+
+@article{levien1993double,
+  title={Double pendulum: An experiment in chaos},
+  author={Levien, R. B. and Tan, S. M.},
+  journal={American Journal of Physics},
+  volume={61},
+  number={11},
+  pages={1038--1044},
+  year={1993},
+  publisher={American Association of Physics Teachers},
+  doi={10.1119/1.17335},
+  note={Experimental study with comparison to numerical simulation}
+}
+
+@article{dalessi2023analytical,
+  title={An analytical, numerical and experimental study of the double pendulum},
+  author={d'Alessio, Serge},
+  journal={European Journal of Physics},
+  volume={44},
+  number={1},
+  pages={015002},
+  year={2023},
+  publisher={IOP Publishing},
+  note={Comprehensive study combining analytical, numerical, and experimental approaches}
+}
+
+% === Numerical Integration Methods ===
+
+@article{hairer2003geometric,
+  title={Geometric numerical integration illustrated by the {St{\"o}rmer--Verlet} method},
+  author={Hairer, Ernst and Lubich, Christian and Wanner, Gerhard},
+  journal={Acta Numerica},
+  volume={12},
+  pages={399--450},
+  year={2003},
+  publisher={Cambridge University Press},
+  doi={10.1017/S0962492902000144},
+  note={Foundational paper on symplectic integration via the Stormer-Verlet method}
+}
+
+@book{hairer2006geometric,
+  title={Geometric Numerical Integration: Structure-Preserving Algorithms for Ordinary Differential Equations},
+  author={Hairer, Ernst and Lubich, Christian and Wanner, Gerhard},
+  year={2006},
+  edition={2nd},
+  publisher={Springer},
+  series={Springer Series in Computational Mathematics},
+  doi={10.1007/3-540-30666-8},
+  note={Comprehensive reference on symplectic integrators and geometric integration}
+}
+
+@article{ruth1983canonical,
+  title={A canonical integration technique},
+  author={Ruth, Ronald D.},
+  journal={IEEE Transactions on Nuclear Science},
+  volume={30},
+  number={4},
+  pages={2669--2671},
+  year={1983},
+  publisher={IEEE},
+  doi={10.1109/TNS.1983.4332919},
+  note={First explicit symplectic integrator for particle accelerator dynamics}
+}
+
+% === Lyapunov Exponent Computation ===
+
+@article{benettin1980lyapunov,
+  title={Lyapunov characteristic exponents for smooth dynamical systems and for {Hamiltonian} systems; a method for computing all of them. {Part 1}: Theory},
+  author={Benettin, Giancarlo and Galgani, Luigi and Giorgilli, Antonio and Strelcyn, Jean-Marie},
+  journal={Meccanica},
+  volume={15},
+  number={1},
+  pages={9--20},
+  year={1980},
+  publisher={Springer},
+  doi={10.1007/BF02128236},
+  note={Foundational paper on the standard algorithm for computing Lyapunov exponents}
+}
+
+@article{skokos2010lyapunov,
+  title={The Lyapunov characteristic exponents and their computation},
+  author={Skokos, Charalampos},
+  journal={Lecture Notes in Physics},
+  volume={790},
+  pages={63--135},
+  year={2010},
+  publisher={Springer},
+  doi={10.1007/978-3-642-04458-8_2},
+  note={Comprehensive survey of LCE computation methods including Benettin algorithm}
+}
+
+% === Open-Source Code Repositories and Tutorials ===
+
+@misc{dassencio_double_pendulum,
+  author={Dassencio, Diego},
+  title={Double Pendulum Simulator},
+  year={2020},
+  howpublished={\url{https://github.com/dassencio/double-pendulum}},
+  note={Python implementation with both Lagrangian and Hamiltonian formulations, RK4 integration}
+}
+
+@misc{cristello_double_pendulum,
+  author={Cristello, Josmar},
+  title={Double Pendulum Simulation},
+  year={2022},
+  howpublished={\url{https://github.com/josmarcristello/Double-Pendulum-Simulation}},
+  note={Python simulation using RK4 and Euler methods with detailed technical report}
+}
+
+@misc{scipython_double_pendulum,
+  title={The Double Pendulum},
+  author={{SciPython}},
+  year={2019},
+  howpublished={\url{https://scipython.com/blog/the-double-pendulum/}},
+  note={Python tutorial using scipy.integrate.odeint with matplotlib animation}
+}
+
+@misc{wikipedia_double_pendulum,
+  title={Double pendulum},
+  author={{Wikipedia contributors}},
+  year={2024},
+  howpublished={\url{https://en.wikipedia.org/wiki/Double_pendulum}},
+  note={Comprehensive derivation of equations of motion in both Lagrangian and Hamiltonian formulations}
+}
+
+@misc{wikipedia_symplectic,
+  title={Symplectic integrator},
+  author={{Wikipedia contributors}},
+  year={2024},
+  howpublished={\url{https://en.wikipedia.org/wiki/Symplectic_integrator}},
+  note={Overview of symplectic integration methods including Stormer-Verlet and higher-order schemes}
+}
