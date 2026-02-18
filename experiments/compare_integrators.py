@@ -14,17 +14,12 @@ import seaborn as sns
 from sim.pendulum import simulate, simulate_symplectic, total_energy
 
 sns.set_theme(style="whitegrid", context="paper", font_scale=1.2)
-mpl.rcParams.update({
-    'figure.figsize': (10, 5), 'figure.dpi': 300,
-    'axes.spines.top': False, 'axes.spines.right': False,
-    'axes.linewidth': 0.8, 'axes.labelsize': 13,
-    'axes.titlesize': 14, 'axes.titleweight': 'bold',
-    'xtick.labelsize': 11, 'ytick.labelsize': 11,
-    'legend.fontsize': 11, 'legend.framealpha': 0.9,
-    'legend.edgecolor': '0.8', 'font.family': 'serif',
-    'grid.alpha': 0.3, 'grid.linewidth': 0.5,
-    'savefig.bbox': 'tight', 'savefig.pad_inches': 0.1,
-})
+mpl.rcParams.update({'figure.figsize': (10, 5), 'figure.dpi': 300, 'axes.spines.top': False,
+    'axes.spines.right': False, 'axes.linewidth': 0.8, 'axes.labelsize': 13,
+    'axes.titlesize': 14, 'axes.titleweight': 'bold', 'xtick.labelsize': 11,
+    'ytick.labelsize': 11, 'legend.fontsize': 11, 'legend.framealpha': 0.9,
+    'legend.edgecolor': '0.8', 'font.family': 'serif', 'grid.alpha': 0.3,
+    'grid.linewidth': 0.5, 'savefig.bbox': 'tight', 'savefig.pad_inches': 0.1})
 
 
 def run_comparison():

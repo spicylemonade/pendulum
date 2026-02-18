@@ -1,4 +1,8 @@
 
+__pycache__/
+*.pyc
+.coverage
+
 # Archivara: prevent secrets from being committed
 .env
 .env.*
