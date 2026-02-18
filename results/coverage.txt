@@ -1,0 +1,28 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.17, pytest-9.0.2, pluggy-1.6.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /home/codex/work/repo
+plugins: cov-7.0.0, anyio-4.12.1
+collecting ... collected 8 items
+
+tests/test_analysis.py::test_lyapunov_positive_for_chaos PASSED          [ 12%]
+tests/test_analysis.py::test_poincare_section_has_crossings PASSED       [ 25%]
+tests/test_energy.py::test_energy_conservation_rk45 PASSED               [ 37%]
+tests/test_limits.py::test_small_angle_regime PASSED                     [ 50%]
+tests/test_limits.py::test_single_pendulum_limit PASSED                  [ 62%]
+tests/test_limits.py::test_symplectic_energy_bounded PASSED              [ 75%]
+tests/test_visualize.py::test_plot_trajectories_creates_file PASSED      [ 87%]
+tests/test_visualize.py::test_animate_pendulum_creates_gif PASSED        [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.10.17-final-0 _______________
+
+Name               Stmts   Miss  Cover   Missing
+------------------------------------------------
+sim/__init__.py        0      0   100%
+sim/analysis.py       46      0   100%
+sim/pendulum.py       40      0   100%
+sim/visualize.py      55      0   100%
+------------------------------------------------
+TOTAL                141      0   100%
+============================== 8 passed in 17.93s ==============================
