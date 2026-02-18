@@ -1,0 +1,42 @@
+{
+  "item_id": "item_005",
+  "title": "Mathematical Formulation of the Double Pendulum System",
+  "date": "2026-02-18",
+  "references": ["wikipedia_double_pendulum", "dassencio_lagrangian", "shinbrot1992chaos"],
+  "system_description": "Planar double pendulum: two point masses m1, m2 connected by rigid massless rods of lengths L1, L2. The first rod pivots at a fixed point. Both swing freely in the vertical plane under gravity g.",
+  "generalized_coordinates": {
+    "theta1": "Angle of first pendulum rod from vertical (positive counterclockwise)",
+    "theta2": "Angle of second pendulum rod from vertical (positive counterclockwise)"
+  },
+  "cartesian_positions": {
+    "x1": "L1 * sin(theta1)",
+    "y1": "-L1 * cos(theta1)",
+    "x2": "L1 * sin(theta1) + L2 * sin(theta2)",
+    "y2": "-L1 * cos(theta1) - L2 * cos(theta2)"
+  },
+  "kinetic_energy": "T = (1/2) * (m1 + m2) * L1^2 * dtheta1^2 + (1/2) * m2 * L2^2 * dtheta2^2 + m2 * L1 * L2 * dtheta1 * dtheta2 * cos(theta1 - theta2)",
+  "potential_energy": "V = -(m1 + m2) * g * L1 * cos(theta1) - m2 * g * L2 * cos(theta2)",
+  "lagrangian": "L = T - V",
+  "euler_lagrange_equations": {
+    "eq1": "(m1 + m2) * L1 * ddtheta1 + m2 * L2 * ddtheta2 * cos(theta1 - theta2) + m2 * L2 * dtheta2^2 * sin(theta1 - theta2) + (m1 + m2) * g * sin(theta1) = 0",
+    "eq2": "m2 * L2 * ddtheta2 + m2 * L1 * ddtheta1 * cos(theta1 - theta2) - m2 * L1 * dtheta1^2 * sin(theta1 - theta2) + m2 * g * sin(theta2) = 0"
+  },
+  "solved_angular_accelerations": {
+    "description": "Solving the 2x2 linear system for ddtheta1 and ddtheta2. Let delta = theta1 - theta2, M = m1 + m2.",
+    "denominator": "den = L1 * L2 * (M - m2 * cos^2(delta))",
+    "ddtheta1": "(-m2 * L2 * dtheta2^2 * sin(delta) - M * g * sin(theta1) + m2 * g * sin(theta2) * cos(delta) - m2 * L1 * dtheta1^2 * sin(delta) * cos(delta)) * L2 / den ... (see implementation for exact form)",
+    "ddtheta2": "Symmetric expression (see implementation for exact form)",
+    "note": "The exact expressions are implemented in pendulum.py as the derivatives function, following the Wikipedia double pendulum article formulation."
+  },
+  "first_order_system": {
+    "state_vector": "[theta1, omega1, theta2, omega2] where omega1 = dtheta1/dt, omega2 = dtheta2/dt",
+    "derivatives": {
+      "dtheta1_dt": "omega1",
+      "domega1_dt": "(-m2*L1*omega1^2*sin(delta)*cos(delta) + m2*g*sin(theta2)*cos(delta) - m2*L2*omega2^2*sin(delta) - (m1+m2)*g*sin(theta1)) / (L1*(m1+m2) - m2*L1*cos^2(delta))",
+      "dtheta2_dt": "omega2",
+      "domega2_dt": "(m2*L2*omega2^2*sin(delta)*cos(delta) + (m1+m2)*(g*sin(theta1)*cos(delta) - L1*omega1^2*sin(delta) - g*sin(theta2))) / (L2*(m1+m2) - m2*L2*cos^2(delta))"
+    }
+  },
+  "total_energy": "E = T + V = (1/2)*(m1+m2)*L1^2*omega1^2 + (1/2)*m2*L2^2*omega2^2 + m2*L1*L2*omega1*omega2*cos(delta) - (m1+m2)*g*L1*cos(theta1) - m2*g*L2*cos(theta2)",
+  "consistency_check": "Equations match Wikipedia double pendulum article and are consistent with Shinbrot et al. 1992 formulation."
+}

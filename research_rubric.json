@@ -71,8 +71,8 @@
           "id": "item_005",
           "description": "Define the mathematical formulation for the double pendulum system",
           "acceptance_criteria": "Document the complete Lagrangian derivation: define generalized coordinates (theta1, theta2), write the kinetic and potential energy expressions, derive the Euler-Lagrange equations, and convert the resulting coupled second-order ODEs into a system of four first-order ODEs suitable for numerical integration. All equations must be consistent with standard references (e.g., Wikipedia double pendulum article, Shinbrot et al. 1992).",
-          "status": "pending",
-          "notes": null,
+          "status": "completed",
+          "notes": "Full Lagrangian derivation documented in results/mathematical_formulation.json. Includes: generalized coordinates (theta1, theta2), Cartesian positions, T and V expressions, Euler-Lagrange equations, solved angular accelerations, and first-order ODE system [theta1, omega1, theta2, omega2]. Consistent with Wikipedia and Shinbrot et al. 1992.",
           "error": null
         }
       ]
@@ -268,9 +268,9 @@
   ],
   "summary": {
     "total_items": 25,
-    "completed": 4,
+    "completed": 5,
     "in_progress": 0,
     "failed": 0,
-    "pending": 21
+    "pending": 20
   }
 }
