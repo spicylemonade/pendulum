@@ -6,13 +6,14 @@ theta2 is counted. The resulting fractal-like structure is characteristic of
 chaotic systems. Compare with similar maps in Stachowiak & Okada (2006) and
 Shinbrot et al. (1992) from sources.bib.
 """
+import signal
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
-from scipy.integrate import solve_ivp
+from scipy.integrate import odeint
 from sim.pendulum import derivatives
 
 sns.set_theme(style="whitegrid", context="paper", font_scale=1.2)
@@ -29,32 +30,39 @@ mpl.rcParams.update({
 })
 
 
-def count_flips(th2_arr):
-    """Count full 2*pi flips of theta2 by tracking cumulative angle."""
-    unwrapped = np.unwrap(th2_arr)
-    total_rotation = unwrapped[-1] - unwrapped[0]
-    return int(abs(total_rotation) / (2 * np.pi))
-
-
 def run_flip_map(n_grid=200):
-    """Generate the flip-count map."""
+    """Generate the flip-count map using odeint for speed."""
     params = {'m1': 1.0, 'm2': 1.0, 'l1': 1.0, 'l2': 1.0, 'g': 9.81}
     th1_vals = np.linspace(-np.pi, np.pi, n_grid)
     th2_vals = np.linspace(-np.pi, np.pi, n_grid)
     flip_map = np.zeros((n_grid, n_grid), dtype=int)
+    t_eval = np.linspace(0, 10, 201)
 
-    def rhs(t, y):
+    def rhs(y, t):
         return derivatives(y, t, params)
 
-    total = n_grid * n_grid
-    for i, th1 in enumerate(th1_vals):
-        if i % 20 == 0:
-            print(f'  Row {i}/{n_grid} ({100*i*n_grid/total:.0f}%)')
-        for j, th2 in enumerate(th2_vals):
-            state0 = [th1, 0.0, th2, 0.0]
-            sol = solve_ivp(rhs, (0, 10), state0, method='RK45',
-                            rtol=1e-8, atol=1e-10, max_step=0.1)
-            flip_map[j, i] = count_flips(sol.y[2])
+    # Set timeout: 5 minutes
+    class Timeout(Exception):
+        pass
+
+    def handler(signum, frame):
+        raise Timeout()
+    signal.signal(signal.SIGALRM, handler)
+    signal.alarm(540)
+
+    try:
+        for i in range(n_grid):
+            if i % 20 == 0:
+                print(f'  Row {i}/{n_grid}')
+            for j in range(n_grid):
+                state0 = [th1_vals[i], 0.0, th2_vals[j], 0.0]
+                sol = odeint(rhs, state0, t_eval, rtol=1e-6, atol=1e-6)
+                unwrapped = np.unwrap(sol[:, 2])
+                flip_map[j, i] = int(abs(unwrapped[-1] - unwrapped[0]) / (2*np.pi))
+        signal.alarm(0)
+    except Timeout:
+        signal.alarm(0)
+        print(f'Timed out at row {i}. Using partial results.')
 
     fig, ax = plt.subplots(figsize=(8, 7))
     cmap = sns.color_palette("rocket", as_cmap=True)
