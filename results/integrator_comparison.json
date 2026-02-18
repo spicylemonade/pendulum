@@ -1,0 +1,14 @@
+{
+  "rk45": {
+    "method": "RK45",
+    "dt": 0.01,
+    "sim_time": 100,
+    "max_energy_drift_pct": 2.905046206232991e-07
+  },
+  "symplectic": {
+    "method": "Implicit Midpoint (Symplectic)",
+    "dt": 0.01,
+    "sim_time": 100,
+    "max_energy_drift_pct": 0.007684063292116184
+  }
+}
