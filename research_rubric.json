@@ -1,0 +1,276 @@
+{
+  "version": "1.0",
+  "created_at": "2026-02-18T12:00:00Z",
+  "updated_at": "2026-02-18T02:16:55.748486+00:00",
+  "current_agent": "orchestrator",
+  "agent_status": {
+    "orchestrator": {
+      "status": "completed",
+      "started_at": "2026-02-18T12:00:00Z",
+      "completed_at": "2026-02-18T02:16:55.748465+00:00",
+      "error": null
+    },
+    "researcher": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "writer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    },
+    "reviewer": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "error": null
+    }
+  },
+  "phases": [
+    {
+      "id": "phase_1",
+      "name": "Problem Analysis & Literature Review",
+      "order": 1,
+      "items": [
+        {
+          "id": "item_001",
+          "description": "Analyze repository structure and define project scope",
+          "acceptance_criteria": "Written document (README.md or docs/) listing all existing files, empty directories, git configuration, and a clear statement of the project goal: build a double pendulum RL simulator with physics-accurate dynamics, Gymnasium-compatible environment, and trained RL agents for swing-up and balance tasks.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_002",
+          "description": "Conduct literature review on double pendulum dynamics and RL control",
+          "acceptance_criteria": "Web search performed for at least 5 distinct queries covering: (1) double pendulum Lagrangian dynamics, (2) RL for underactuated systems, (3) pendubot/acrobot swing-up control, (4) sim-to-real transfer for pendulum systems, (5) SAC/PPO/TD3 benchmarks on continuous control. Summary of findings documented in a literature_review.md file with at least 2 paragraphs per topic.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_003",
+          "description": "Create and populate sources.bib with BibTeX entries for all consulted references",
+          "acceptance_criteria": "sources.bib file exists in repo root with valid BibTeX entries for at least 10 relevant papers including: Deisenroth et al. (PILCO), Haarnoja et al. (SAC), Schulman et al. (PPO), Fujimoto et al. (TD3), at least one paper on double pendulum RL swing-up, at least one on sim-to-real pendulum transfer, and the AI Olympics / RealAIGym competition references. Each entry must have author, title, year, and venue fields.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_004",
+          "description": "Survey existing open-source double pendulum environments and simulators",
+          "acceptance_criteria": "Document comparing at least 5 existing implementations: Gymnasium Acrobot-v1, Gymnasium InvertedDoublePendulum (MuJoCo), the dfki-ric-underactuated-lab double pendulum repo, PyDy double pendulum example, and at least one other. Comparison covers: physics fidelity, observation/action spaces, rendering, extensibility, and license. Findings recorded in literature_review.md.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_005",
+          "description": "Define system requirements and technology stack",
+          "acceptance_criteria": "A requirements document specifying: Python version (>=3.9), core dependencies (gymnasium, numpy, scipy, matplotlib, stable-baselines3, torch/jax), physics engine choice (analytical Lagrangian vs MuJoCo), rendering backend (matplotlib animation and/or pygame), and project directory structure with rationale for each choice. Document references at least 3 papers from sources.bib to justify design decisions.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_2",
+      "name": "Baseline Implementation & Metrics",
+      "order": 2,
+      "items": [
+        {
+          "id": "item_006",
+          "description": "Implement double pendulum dynamics engine using Lagrangian mechanics",
+          "acceptance_criteria": "A Python module (e.g., dynamics.py) that: (1) derives equations of motion for a double pendulum from the Lagrangian using symbolic or hardcoded Euler-Lagrange equations, (2) integrates the ODE using scipy.integrate.solve_ivp with RK45, (3) accepts configurable parameters (masses m1/m2, lengths l1/l2, gravity g, damping coefficients), (4) passes unit tests verifying energy conservation (total energy drift < 1% over 10s for undamped case) and known analytical limits (single pendulum reduction when m2=0).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_007",
+          "description": "Build Gymnasium-compatible double pendulum environment",
+          "acceptance_criteria": "A Gymnasium environment class (DoublePendulumEnv) that: (1) inherits from gymnasium.Env, (2) defines observation_space as Box with [cos(\u03b81), sin(\u03b81), cos(\u03b82), sin(\u03b82), d\u03b81/dt, d\u03b82/dt], (3) defines action_space as continuous Box for torque on actuated joint, (4) implements reset() with configurable initial states (hanging, random, near-upright), (5) implements step() with configurable dt, (6) passes gymnasium.utils.env_checker.check_env() with no errors, (7) supports both pendubot (shoulder-actuated) and acrobot (elbow-actuated) configurations via a constructor flag.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_008",
+          "description": "Implement rendering and visualization system",
+          "acceptance_criteria": "The environment supports: (1) render_mode='human' displaying a real-time animated pendulum using matplotlib or pygame, (2) render_mode='rgb_array' returning frames as numpy arrays suitable for video recording, (3) a standalone visualization script that replays saved trajectories from .npz files, (4) phase-space plots (\u03b81 vs d\u03b81/dt, \u03b82 vs d\u03b82/dt) generated from trajectory data. Visual output shows joint positions, links, and an optional trace of the tip mass.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_009",
+          "description": "Define reward functions and evaluation metrics",
+          "acceptance_criteria": "At least 3 reward function variants implemented and documented: (1) sparse reward (+1 when both links upright within \u00b115\u00b0 for >0.5s), (2) dense shaped reward based on cosine of angles plus angular velocity penalty plus energy-based shaping term, (3) energy-based reward encouraging energy injection toward the upright equilibrium energy. Evaluation metrics defined and implemented: success rate (% of episodes reaching upright), time-to-balance, cumulative reward, energy efficiency (total torque squared integrated over episode). All metrics logged to a CSV or JSON file per evaluation run.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_010",
+          "description": "Establish random and energy-based control baselines",
+          "acceptance_criteria": "Two non-RL baseline controllers implemented and evaluated: (1) random policy (uniform random torques), (2) energy-based swing-up controller using Astrom's energy pumping method adapted for double pendulum (reference from sources.bib). Each baseline evaluated over 100 episodes with metrics from item_009 recorded. Results saved to results/ directory as baseline_results.json.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_3",
+      "name": "Core Research & Novel Approaches",
+      "order": 3,
+      "items": [
+        {
+          "id": "item_011",
+          "description": "Train SAC agent for double pendulum swing-up and balance",
+          "acceptance_criteria": "SAC agent trained using Stable-Baselines3 with: (1) at least 500k environment steps, (2) hyperparameters documented (learning rate, batch size, buffer size, tau, gamma, entropy coefficient), (3) training curves (reward vs. steps) saved to figures/, (4) best model checkpoint saved, (5) achieves >30% swing-up success rate from hanging initial state (improvement over random baseline from item_010). Training configuration saved as a reproducible YAML/JSON config file.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_012",
+          "description": "Train PPO agent for double pendulum swing-up and balance",
+          "acceptance_criteria": "PPO agent trained using Stable-Baselines3 with: (1) at least 1M environment steps, (2) hyperparameters documented and tuned (n_steps, n_epochs, clip_range, learning rate schedule), (3) training curves saved to figures/, (4) best model checkpoint saved, (5) performance compared against SAC (item_011) on all metrics from item_009. Results saved to results/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_013",
+          "description": "Train TD3 agent for double pendulum swing-up and balance",
+          "acceptance_criteria": "TD3 agent trained using Stable-Baselines3 with: (1) at least 500k environment steps, (2) hyperparameters documented (policy delay, target noise, noise clip), (3) training curves saved to figures/, (4) best model checkpoint saved, (5) performance compared against SAC and PPO on all metrics from item_009. Results saved to results/.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_014",
+          "description": "Implement hybrid swing-up + LQR stabilization controller",
+          "acceptance_criteria": "A hybrid controller that: (1) uses a trained RL agent (best from items 011-013) for the swing-up phase to reach a region of attraction near the upright equilibrium, (2) switches to an LQR controller (linearized about the upright equilibrium) for final stabilization, (3) implements a smooth switching criterion based on state proximity to the upright position (e.g., both angles within \u00b130\u00b0 and angular velocities below threshold), (4) achieves higher success rate and lower time-to-balance than pure RL. This approach is compared against prior work (Wieber et al. or similar from sources.bib).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_015",
+          "description": "Implement curriculum learning for progressive difficulty",
+          "acceptance_criteria": "A curriculum training pipeline that: (1) starts with the pendulum near-upright (easy) and progressively increases initial angle range toward fully hanging (hard), (2) defines at least 4 curriculum stages with measurable promotion criteria (e.g., >80% success at current difficulty for 50 consecutive episodes), (3) demonstrates faster convergence or higher final performance than training from scratch on the hardest task (compared via learning curves). Curriculum schedule and results saved to results/curriculum_results.json.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_016",
+          "description": "Implement domain randomization for robustness",
+          "acceptance_criteria": "Environment wrapper that randomizes physical parameters (masses \u00b120%, lengths \u00b110%, damping \u00b130%, gravity \u00b15%, action delay 0-3 steps) during training. Agent trained with domain randomization evaluated on: (1) nominal parameters, (2) 50 randomly sampled parameter sets. Robustness comparison (mean \u00b1 std of success rate) against agent trained without randomization. Results saved to results/domain_rand_results.json.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_4",
+      "name": "Experiments & Evaluation",
+      "order": 4,
+      "items": [
+        {
+          "id": "item_017",
+          "description": "Run comprehensive benchmark of all agents and controllers",
+          "acceptance_criteria": "Systematic evaluation of all trained agents (SAC, PPO, TD3, hybrid RL+LQR, curriculum-trained, domain-randomized) on 200 episodes each from 3 initial conditions: (1) hanging (\u03b81=\u03b82=\u03c0), (2) random, (3) near-upright perturbation. All metrics from item_009 recorded. Results compiled into a single results/benchmark_results.json with per-agent, per-condition breakdowns.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_018",
+          "description": "Perform hyperparameter sensitivity analysis",
+          "acceptance_criteria": "For the best-performing algorithm, vary at least 3 key hyperparameters (e.g., learning rate, discount factor, entropy coefficient) across 3 values each. Record final success rate and cumulative reward for each configuration. Results presented as a sensitivity table or heatmap saved to figures/hyperparameter_sensitivity.png and results/hyperparameter_sweep.json.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_019",
+          "description": "Analyze chaos sensitivity and trajectory diversity",
+          "acceptance_criteria": "Experiment demonstrating chaotic sensitivity: (1) run 50 episodes from nearly identical initial conditions (perturbations < 0.001 rad) and compute trajectory divergence (Lyapunov exponent estimate or mean trajectory distance over time), (2) visualize trajectory spread with a figure showing overlaid tip-mass paths saved to figures/chaos_sensitivity.png, (3) compare trajectory diversity under the best RL controller vs. uncontrolled dynamics. Reference at least one chaos/dynamical systems paper from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_020",
+          "description": "Compare results against prior work from literature review",
+          "acceptance_criteria": "Quantitative comparison table in results/prior_work_comparison.json containing: (1) our best agent's success rate, time-to-balance, and energy efficiency, (2) reported metrics from at least 3 prior works identified in items 002-004 (e.g., SAC swing-up from arxiv 2312.11311, MC-PILCO from AI Olympics, energy-based approach from EBERL). Where direct comparison is impossible, note differences in setup and provide normalized or qualitative comparison. References cite specific entries from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_021",
+          "description": "Generate publication-quality figures for all key results",
+          "acceptance_criteria": "At minimum 6 figures saved to figures/ directory: (1) training_curves.png \u2014 reward vs. steps for all algorithms on one plot, (2) success_rate_bar.png \u2014 bar chart of success rates by algorithm and initial condition, (3) phase_portraits.png \u2014 phase-space trajectories for best agent, (4) pendulum_snapshots.png \u2014 time-lapse visualization of a successful swing-up episode, (5) chaos_sensitivity.png (from item_019), (6) hyperparameter_sensitivity.png (from item_018). All figures use consistent styling, labeled axes, legends, and minimum 300 DPI resolution.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "phase_5",
+      "name": "Analysis & Documentation",
+      "order": 5,
+      "items": [
+        {
+          "id": "item_022",
+          "description": "Write comprehensive README with project overview, setup instructions, and results summary",
+          "acceptance_criteria": "README.md updated to contain: (1) project title and one-paragraph abstract, (2) animated GIF or link to video of the best agent performing swing-up, (3) installation instructions (pip install -e . or requirements.txt), (4) usage examples (training a new agent, evaluating a saved model, rendering an episode), (5) summary table of best results per algorithm, (6) project structure overview, (7) citation section referencing sources.bib. Minimum 300 words.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_023",
+          "description": "Document environment API and configuration options",
+          "acceptance_criteria": "API documentation (in README.md or a separate docs/ file) covering: (1) DoublePendulumEnv constructor parameters with types and defaults, (2) observation space and action space descriptions with physical units, (3) reward function variants and how to select them, (4) rendering modes and options, (5) at least 2 code examples showing basic usage (creating env, running an episode, switching between pendubot/acrobot mode).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_024",
+          "description": "Write analysis report discussing findings, limitations, and future work",
+          "acceptance_criteria": "An analysis document (analysis.md or section in README) containing: (1) discussion of which algorithm performed best and why (referencing entropy exploration for SAC, on-policy stability for PPO, etc.), (2) analysis of reward shaping impact on learning speed, (3) discussion of hybrid RL+LQR advantages over pure RL, (4) at least 3 identified limitations (e.g., sim-to-real gap, computational cost, limited to 2D), (5) at least 3 concrete future work directions (e.g., 3D pendulum, model-based RL with MC-PILCO, sim-to-real transfer), (6) all claims reference results from Phase 4 and papers from sources.bib.",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        },
+        {
+          "id": "item_025",
+          "description": "Ensure reproducibility with configuration files and random seeds",
+          "acceptance_criteria": "Project includes: (1) a requirements.txt or pyproject.toml pinning all dependency versions, (2) all training scripts accept a --seed argument and set numpy/torch/gymnasium random seeds, (3) a configs/ directory with YAML/JSON files for each experiment (SAC, PPO, TD3, curriculum, domain randomization) specifying all hyperparameters, (4) a Makefile or run_all.sh script that reproduces all experiments from scratch, (5) verification that running the same config+seed produces identical training curves (tested on at least 1 short run).",
+          "status": "pending",
+          "notes": null,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_items": 25,
+    "completed": 0,
+    "in_progress": 0,
+    "failed": 0,
+    "pending": 25
+  }
+}
